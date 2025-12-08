@@ -56,7 +56,7 @@ Gets upload session status.
 **Returns:**
 
 - Upload session metadata, uploaded chunk info, image Id (for IMAGE upload location), optional `presignedURL`
-- `presignedURL`: pre-signed URL for GET api/v1/uplods/\{uploadId\} and GET api/v1/uplods/\{uploadId\}/file if a positive value is provided for the expireInSeconds query parameter
+- `presignedURL`: pre-signed URL for GET api/v1/uploads/\{uploadId\} and GET api/v1/uploads/\{uploadId\}/file if a positive value is provided for the expireInSeconds query parameter
 
 ---
 
