@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Processes API
+# Processes / Reports API
 
 Working with processes and reports via `/api/v1/processes`.
 
@@ -62,6 +62,46 @@ Provide the process parameters in JSON format. Example:
   "IsOnlyCentralizedData": true
 }
 ```
+
+#### Special FileName type parameter
+
+When a process parameter is of type FileName the system can process it two ways:
+
+* as a file path, in this case the file must exist IN the server where the process is being executed
+* or as a JSON parameter containing the fileName (optional) and fileContent as base64
+
+Examples for calling Import CSV process:
+As a path:
+```json
+{
+    "AD_ImportTemplate_ID": 1000000,
+    "ImportMode": "I",
+    "FileName": "/tmp/ImportProduct.csv"
+}
+```
+
+As a contained file:
+```json
+{
+    "AD_ImportTemplate_ID": 1000000,
+    "ImportMode": "I",
+    "FileName": {
+        "fileContent": "TmFtZQpUZXN0IFByb2R1Y3QgRnJvbSBBUEkK"
+    }
+}
+```
+As a contained file with name:
+```json
+{
+    "AD_ImportTemplate_ID": 1000000,
+    "ImportMode": "I",
+    "FileName": {
+        "fileName": "ImportProduct.csv",
+        "fileContent": "TmFtZQpUZXN0IFByb2R1Y3QgRnJvbSBBUEkK"
+    }
+}
+```
+
 
 #### Special Parameters for Reports
 
