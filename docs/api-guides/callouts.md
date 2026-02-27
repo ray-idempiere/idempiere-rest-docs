@@ -62,7 +62,7 @@ The trigger column itself is excluded from `changedFields` — only side-effect 
 
 | Status | Condition |
 |--------|-----------|
-| 400 | Missing or invalid `columnName`, `value`, `record`, or `recordId` |
+| 400 | Missing `columnName`; malformed `record` or `recordId`; or invalid `value` type for the target column (`null` is allowed to clear) |
 | 403 | User role does not have access to the window |
 | 404 | Window, tab, column, or record not found |
 | 500 | Callout execution error |
@@ -91,7 +91,7 @@ Error body example:
 
 ## Field Metadata: hasCallout Flag
 
-The fields metadata endpoint on windows also includes a `hasCallout` boolean flag for each field:
+The Window fields metadata endpoint also includes a `hasCallout` boolean flag for each field:
 
 **GET** `/api/v1/windows/{windowSlug}/{tabSlug}/fields`
 
