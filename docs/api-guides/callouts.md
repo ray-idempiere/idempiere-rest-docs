@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Callouts API
 
-Execute field-level callouts without saving records via `/api/v1/callout`.
+Execute field-level callouts without saving records via `/api/v1/callout/{windowSlug}/{tabSlug}`.
 
 This endpoint allows client applications to fire iDempiere callouts and retrieve the changed fields — all without persisting anything to the database. This is useful for building dynamic UIs that react to field changes in real time.
 
@@ -80,7 +80,7 @@ Error body example:
 ## How It Works
 
 1. The endpoint resolves the window and tab from the URL slugs using base-language names, so it works consistently across locales.
-2. If `recordId` is provided and greater than 0, the existing record is loaded. Otherwise, a new record context is initialized.
+2. If `recordId` is provided and greater than 0, the existing record is loaded. Otherwise, a new record is initialized.
 3. Field values from `record` are applied to set up the context.
 4. A snapshot of all field values is taken (before state).
 5. The trigger column is set to `value`, which fires any registered callouts via `GridTab.processFieldChange()`.
@@ -98,8 +98,7 @@ The Window fields metadata endpoint also includes a `hasCallout` boolean flag fo
 ```json
 {
   "columnName": "M_Product_ID",
-  "hasCallout": true,
-  ...
+  "hasCallout": true
 }
 ```
 
